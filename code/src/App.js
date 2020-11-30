@@ -28,3 +28,9 @@ export const App = () => {
     
   )
 }
+
+/*IMORGON
+1) Backgrund och labyrint logic
+2) Besämmt oss för styling 
+3) LocalStorage
+*/

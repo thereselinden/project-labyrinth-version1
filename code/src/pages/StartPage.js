@@ -26,3 +26,5 @@ const StartPage = () => {
   )
 }
 export default StartPage;
+
+//Inputtext för att ange username, starta spel disable tills username angivet

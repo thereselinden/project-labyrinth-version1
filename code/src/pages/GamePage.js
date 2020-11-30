@@ -70,3 +70,6 @@ export default GamePage;
 const Container = styled.article`
   display: flex;
 `
+
+//Grid med markör för att visa vart man är beroende på vilken väg man valt
+//allt en polyline baserat på coordinater. 

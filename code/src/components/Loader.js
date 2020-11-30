@@ -14,3 +14,5 @@ const Loader = () => {
   )
 }
 export default Loader;
+
+//lägg in styling för spinner
