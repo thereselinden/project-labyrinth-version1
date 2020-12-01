@@ -5,21 +5,12 @@ import styled from 'styled-components/macro';
 import StartGame from '../components/StartGame';
 import Game from '../components/Game';
 
-
 const StartPage = () => {
   const isGameStarted = useSelector(store => store.game.isGameStarted);
-  console.log(isGameStarted)
+  console.log(isGameStarted);
 
-  return (
-    <Main>
-      {!isGameStarted ? (
-        <StartGame />
-      ) : (
-        <Game />
-      )}
-    </Main>
-  )
-}
+  return <Main>{!isGameStarted ? <StartGame /> : <Game />}</Main>;
+};
 export default StartPage;
 
 const Main = styled.main`
@@ -27,4 +18,4 @@ const Main = styled.main`
   min-height: 100vh;
   //background-image: url('../assets/labyrinth.png');
   background-position: center;
-`
+`;

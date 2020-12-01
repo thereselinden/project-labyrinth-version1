@@ -6,7 +6,7 @@ import { ui } from './reducers/ui';
 import { game } from './reducers/game';
 import StartPage from './pages/StartPage';
 
-const reducer = combineReducers({ game: game.reducer, ui: ui.reducer});
+const reducer = combineReducers({ game: game.reducer, ui: ui.reducer });
 
 const store = configureStore({ reducer });
 

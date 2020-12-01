@@ -7,46 +7,48 @@ import { game } from '../reducers/game';
 import Button from '../components/Button';
 
 const StartGame = () => {
-  const [username, setUsername] = useState("");
-  const [open, setOpen] = useState("");
+  const [username, setUsername] = useState('');
+  const [open, setOpen] = useState('');
 
   const dispatch = useDispatch();
   //const currentUser = useSelector(store => store.game.username);
 
-  const onAddUsername = (event) => {
+  const onAddUsername = event => {
     event.preventDefault();
     setOpen(open === '' ? 'open' : '');
-    dispatch(game.actions.setUsername({username}))
+    dispatch(game.actions.setUsername({ username }));
   };
 
   const onHandleStartGame = () => {
-    dispatch(startGame(username))
-    console.log("start game, isGameStarted ")
-  }; 
+    dispatch(startGame(username));
+    console.log('start game, isGameStarted ');
+  };
 
   const toggleDialog = () => {
     setOpen(open === '' ? 'open' : '');
-    console.log("toggle")
+    console.log('toggle');
   };
 
   return (
     <Container>
       <section className="nes-container is-rounded is-centered">
-        <p>{!username ? "Start by adding username" : `OK ${username}. Let's go!`}</p>
-        <Button 
-          button = "button"
-          click = {!username ? toggleDialog : onHandleStartGame}
-          text = {!username ? "Add username" : "start game"}
+        <p>
+          {!username ? 'Start by adding username' : `OK ${username}. Let's go!`}
+        </p>
+        <Button
+          button="button"
+          click={!username ? toggleDialog : onHandleStartGame}
+          text={!username ? 'Add username' : 'start game'}
           className="nes-btn is-primary"
-        /> 
+        />
       </section>
       <CustomDialog open={open} className="nes-dialog is-rounded">
-        <h1 className="nes-text is-primary">Welcome!</h1>   
-        <p className="nes-text">Let's get lost together.</p>      
+        <h1 className="nes-text is-primary">Welcome!</h1>
+        <p className="nes-text">Let's get lost together.</p>
         <form onSubmit={onAddUsername}>
-          <div className="nes-field">  
+          <div className="nes-field">
             <label htmlFor="userName">
-              <input 
+              <input
                 type="text"
                 id="userName"
                 name="userName"
@@ -58,23 +60,21 @@ const StartGame = () => {
             </label>
           </div>
           <Menu className="dialog-menu">
-            <Button 
-              button="button"
-              text = "cancel"
-              className="nes-btn"
-            /> 
-            <Button 
+            <Button button="button" text="cancel" className="nes-btn" />
+            <Button
               button="submit"
-              text = "continue"
+              text="continue"
               disabled={!username}
-              className={username ? "nes-btn is-primary" : "nes-btn is-disabled"}
-            /> 
+              className={
+                username ? 'nes-btn is-primary' : 'nes-btn is-disabled'
+              }
+            />
           </Menu>
         </form>
-      </CustomDialog>  
+      </CustomDialog>
     </Container>
-  )
-}
+  );
+};
 export default StartGame;
 
 const Container = styled.section`
@@ -82,13 +82,13 @@ const Container = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-`
+`;
 
 const CustomDialog = styled.dialog`
   margin: 10px;
   //margin-bottom: 250px;
-`
+`;
 const Menu = styled.menu`
   display: flex;
   margin-top: 20px;
-`
+`;

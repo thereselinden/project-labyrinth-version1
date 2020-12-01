@@ -1,42 +1,42 @@
 import { game } from './game';
 import { ui } from './ui';
 
-export const startGame = (username) => {
-  console.log(username)
-  return (dispatch) => {
-    dispatch(ui.actions.setLoading(true)); 
-    fetch("https://wk16-backend.herokuapp.com/start", {
-      method: "POST",
+export const startGame = username => {
+  console.log(username);
+  return dispatch => {
+    dispatch(ui.actions.setLoading(true));
+    fetch('https://wk16-backend.herokuapp.com/start', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username }),  
-    }) 
-    .then((data) => data.json())
-    .then((json) => {
-      dispatch(game.actions.setGame(json)); 
-      dispatch(game.actions.startGame(true));
-      dispatch(ui.actions.setLoading(false)); 
-    });
+      body: JSON.stringify({ username: username }),
+    })
+      .then(data => data.json())
+      .then(json => {
+        dispatch(game.actions.setGame(json));
+        dispatch(game.actions.startGame(true));
+        dispatch(ui.actions.setLoading(false));
+      });
   };
 };
 
 export const selectDirection = (directionValue, username) => {
   console.log(username);
-  return (dispatch) => {
-    dispatch(ui.actions.setLoading(true)); 
-    fetch("https://wk16-backend.herokuapp.com/action", {
-      method: "POST",
+  return dispatch => {
+    dispatch(ui.actions.setLoading(true));
+    fetch('https://wk16-backend.herokuapp.com/action', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: username, 
-        type: "move", 
+        username: username,
+        type: 'move',
         direction: directionValue,
-      }),  
-    }) 
-    .then((data) => data.json())
-    .then((json) => {
-      dispatch(game.actions.setDirection(json)); 
-      dispatch(ui.actions.setLoading(false)); 
-    });
+      }),
+    })
+      .then(data => data.json())
+      .then(json => {
+        dispatch(game.actions.setDirection(json));
+        dispatch(ui.actions.setLoading(false));
+      });
   };
 };
 

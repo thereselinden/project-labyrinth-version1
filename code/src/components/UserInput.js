@@ -5,15 +5,15 @@ import { game } from '../reducers/game';
 import Button from '../components/Button';
 
 const UserInput = () => {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
   const [open, setOpen] = useState('');
   const dispatch = useDispatch();
 
-  const onAddUserName = (event) => {
+  const onAddUserName = event => {
     event.preventDefault();
-    dispatch(game.actions.setUserName(userName))
-    console.log("start click")
-  } 
+    dispatch(game.actions.setUserName(userName));
+    console.log('start click');
+  };
 
   const toggleDialog = () => {
     setOpen(open === '' ? 'open' : '');
@@ -21,10 +21,10 @@ const UserInput = () => {
 
   return (
     <dialog open={open} class="nes-dialog">
-        <form onSubmit={onAddUserName}>
-        <div class="nes-field">  
+      <form onSubmit={onAddUserName}>
+        <div class="nes-field">
           <label htmlFor="userName">
-            <input 
+            <input
               type="text"
               id="userName"
               name="userName"
@@ -36,16 +36,16 @@ const UserInput = () => {
             />
           </label>
         </div>
-          <Button 
-            //button = "button"
-            button="submit"
-            //click = {event => onHandleStartGame(event.target.value)}
-            text = "add username"
-            disabled={!userName}
-            className="nes-btn"
-          /> 
+        <Button
+          //button = "button"
+          button="submit"
+          //click = {event => onHandleStartGame(event.target.value)}
+          text="add username"
+          disabled={!userName}
+          className="nes-btn"
+        />
       </form>
     </dialog>
-  )
-}
-export default UserInput
+  );
+};
+export default UserInput;
