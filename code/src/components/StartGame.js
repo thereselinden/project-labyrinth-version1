@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 
 import { startGame } from '../reducers/thunk';
@@ -7,16 +7,16 @@ import { game } from '../reducers/game';
 import Button from '../components/Button';
 
 const StartGame = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [open, setOpen] = useState("");
 
   const dispatch = useDispatch();
-  const username = useSelector(store => store.game.userName);
+  //const currentUser = useSelector(store => store.game.username);
 
-  const onAddUserName = (event) => {
+  const onAddUsername = (event) => {
     event.preventDefault();
     setOpen(open === '' ? 'open' : '');
-    dispatch(game.actions.setUserName(userName))
+    dispatch(game.actions.setUsername({username}))
   };
 
   const onHandleStartGame = () => {
@@ -32,20 +32,18 @@ const StartGame = () => {
   return (
     <Container>
       <section className="nes-container is-rounded is-centered">
-        <p>{!userName ? "Start by adding username" : `OK ${userName}. Let's go!`}</p>
+        <p>{!username ? "Start by adding username" : `OK ${username}. Let's go!`}</p>
         <Button 
           button = "button"
-          //button="submit"
-          click = {!userName ? toggleDialog : onHandleStartGame}
-          text = {!userName ? "Add username" : "start game"}
-          //disabled={!username}
+          click = {!username ? toggleDialog : onHandleStartGame}
+          text = {!username ? "Add username" : "start game"}
           className="nes-btn is-primary"
         /> 
       </section>
       <CustomDialog open={open} className="nes-dialog is-rounded">
         <h1 className="nes-text is-primary">Welcome!</h1>   
         <p className="nes-text">Let's get lost together.</p>      
-        <form onSubmit={onAddUserName}>
+        <form onSubmit={onAddUsername}>
           <div className="nes-field">  
             <label htmlFor="userName">
               <input 
@@ -53,29 +51,23 @@ const StartGame = () => {
                 id="userName"
                 name="userName"
                 placeholder="Type username..."
-                //required
-                value={userName}
-                onChange={event => setUserName(event.target.value)}
+                value={username}
+                onChange={event => setUsername(event.target.value)}
                 className="nes-input"
               />
             </label>
           </div>
           <Menu className="dialog-menu">
             <Button 
-              //button = "button"
               button="button"
-              //click = {event => onHandleStartGame(event.target.value)}
               text = "cancel"
-              //disabled={!userName}
               className="nes-btn"
             /> 
             <Button 
-              //button = "button"
               button="submit"
-              //click = {event => onHandleStartGame(event.target.value)}
               text = "continue"
-              disabled={!userName}
-              className={userName ? "nes-btn is-primary" : "nes-btn is-disabled"}
+              disabled={!username}
+              className={username ? "nes-btn is-primary" : "nes-btn is-disabled"}
             /> 
           </Menu>
         </form>
@@ -94,7 +86,7 @@ const Container = styled.section`
 
 const CustomDialog = styled.dialog`
   margin: 10px;
-  margin-bottom: 250px;
+  //margin-bottom: 250px;
 `
 const Menu = styled.menu`
   display: flex;

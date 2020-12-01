@@ -1,14 +1,14 @@
 import { game } from './game';
 import { ui } from './ui';
 
-export const startGame = (userName) => {
-  console.log(userName)
+export const startGame = (username) => {
+  console.log(username)
   return (dispatch) => {
     dispatch(ui.actions.setLoading(true)); 
     fetch("https://wk16-backend.herokuapp.com/start", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "username": userName }),  
+      body: JSON.stringify({ username: username }),  
     }) 
     .then((data) => data.json())
     .then((json) => {
@@ -19,14 +19,15 @@ export const startGame = (userName) => {
   };
 };
 
-export const selectDirection = (directionValue) => {
+export const selectDirection = (directionValue, username) => {
+  console.log(username);
   return (dispatch) => {
     dispatch(ui.actions.setLoading(true)); 
     fetch("https://wk16-backend.herokuapp.com/action", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        "username": "Therese", 
+        username: username, 
         type: "move", 
         direction: directionValue,
       }),  

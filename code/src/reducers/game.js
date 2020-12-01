@@ -6,7 +6,7 @@ export const game = createSlice( {
   initialState: {
     game: {},
     history: [], //TO GO BACK IN THE LABYRINTH??
-    userName: "",
+    username: {},
     isGameStarted: false,
   },
   
@@ -15,9 +15,9 @@ export const game = createSlice( {
       state.isGameStarted = action.payload
     },
 
-    setUserName: (state, action) => {
-      state.userName = action.payload
-      console.log(action.payload)
+    setUsername: (state, action) => {
+      state.username = action.payload
+      console.log(state.username)
     },
 
     setGame: (state, action) => {
@@ -38,7 +38,11 @@ export const game = createSlice( {
         state.game = state.history[state.history.length - 1];
         state.history = state.history.slice(0, state.history.length - 1);
       }
-    }
+    },
+
+    restartGame: (state, action) => {
+      state.isGameStarted = action.payload;
+    },
   }, 
 })
 
