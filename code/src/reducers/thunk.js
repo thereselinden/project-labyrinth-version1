@@ -1,17 +1,19 @@
 import { game } from './game';
 import { ui } from './ui';
 
-export const startGame = () => {
+export const startGame = (userName) => {
+  console.log(userName)
   return (dispatch) => {
     dispatch(ui.actions.setLoading(true)); 
     fetch("https://wk16-backend.herokuapp.com/start", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "username": "Therese " }),  
+      body: JSON.stringify({ "username": userName }),  
     }) 
     .then((data) => data.json())
     .then((json) => {
       dispatch(game.actions.setGame(json)); 
+      dispatch(game.actions.startGame(true));
       dispatch(ui.actions.setLoading(false)); 
     });
   };

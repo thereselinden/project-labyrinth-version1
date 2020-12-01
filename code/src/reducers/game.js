@@ -6,11 +6,22 @@ export const game = createSlice( {
   initialState: {
     game: {},
     history: [], //TO GO BACK IN THE LABYRINTH??
+    userName: "",
+    isGameStarted: false,
   },
   
   reducers: {
-    setGame: (state, action) => {
+    startGame: (state, action) => {
+      state.isGameStarted = action.payload
+    },
+
+    setUserName: (state, action) => {
+      state.userName = action.payload
       console.log(action.payload)
+    },
+
+    setGame: (state, action) => {
+      //console.log(action.payload)
       state.game = action.payload
     },
 

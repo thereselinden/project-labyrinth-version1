@@ -1,30 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { startGame } from '../reducers/thunk';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components/macro';
 
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
+import StartGame from '../components/StartGame';
+import Game from '../components/Game';
+
 
 const StartPage = () => {
-  const dispatch = useDispatch();
-
-  const onHandleStartGame = () => {
-    dispatch(startGame())
-    console.log("start click")
-  }
+  const isGameStarted = useSelector(store => store.game.isGameStarted);
+  console.log(isGameStarted)
 
   return (
-    <>
-      <Link to={"/play"}>
-        <Button 
-        button = "button"
-        click = {onHandleStartGame}
-        text = "start game"
-        /> 
-      </Link>
-    </>
+    <Main>
+      {!isGameStarted ? (
+        <StartGame />
+      ) : (
+        <Game />
+      )}
+    </Main>
   )
 }
 export default StartPage;
 
-//Inputtext för att ange username, starta spel disable tills username angivet
+const Main = styled.main`
+  display: flex;
+  min-height: 100vh;
+  //background-image: url('../assets/labyrinth.png');
+  background-position: center;
+`
