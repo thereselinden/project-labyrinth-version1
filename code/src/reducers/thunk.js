@@ -2,25 +2,24 @@ import { game } from './game';
 import { ui } from './ui';
 
 export const startGame = username => {
-  console.log(username);
-  return dispatch => {
+  return (dispatch, getStore) => {
+    console.log(getStore().game.username);
+    console.log(username);
     dispatch(ui.actions.setLoading(true));
     fetch('https://wk16-backend.herokuapp.com/start', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: username }),
+      body: JSON.stringify({ username: getStore().game.username }),
     })
       .then(data => data.json())
       .then(json => {
         dispatch(game.actions.setGame(json));
-        dispatch(game.actions.startGame(true));
         dispatch(ui.actions.setLoading(false));
       });
   };
 };
 
-export const selectDirection = (directionValue, username) => {
-  console.log(username);
+export const selectDirection = (direction, username) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true));
     fetch('https://wk16-backend.herokuapp.com/action', {
@@ -29,7 +28,7 @@ export const selectDirection = (directionValue, username) => {
       body: JSON.stringify({
         username: username,
         type: 'move',
-        direction: directionValue,
+        direction: direction,
       }),
     })
       .then(data => data.json())

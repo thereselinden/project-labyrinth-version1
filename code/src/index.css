@@ -8,6 +8,7 @@ body {
   font-family: 'Press Start 2P';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {

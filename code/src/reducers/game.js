@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-//import { ui } from './ui';
 
 export const game = createSlice({
   name: 'game',
   initialState: {
     game: {},
-    history: [], //TO GO BACK IN THE LABYRINTH??
-    username: {},
-    isGameStarted: false,
+    history: [],
+    username: '',
+    previousStep: '',
   },
 
   reducers: {
-    startGame: (state, action) => {
-      state.isGameStarted = action.payload;
-    },
+    // startGame: (state, action) => {
+    //   state.isGameStarted = action.payload;
+    // },
 
     setUsername: (state, action) => {
       state.username = action.payload;
@@ -21,7 +20,6 @@ export const game = createSlice({
     },
 
     setGame: (state, action) => {
-      //console.log(action.payload)
       state.game = action.payload;
     },
 
@@ -30,18 +28,18 @@ export const game = createSlice({
         state.history = [...state.history, state.game];
       }
       state.game = action.payload;
-      console.log(action.payload);
     },
 
-    historyGoBack: (state, action) => {
+    historyGoBack: state => {
       if (state.history.length > 0) {
         state.game = state.history[state.history.length - 1];
         state.history = state.history.slice(0, state.history.length - 1);
       }
     },
 
-    restartGame: (state, action) => {
-      state.isGameStarted = action.payload;
+    restartGame: state => {
+      state.username = '';
+      state.game = {};
     },
   },
 });

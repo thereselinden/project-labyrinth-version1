@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 const Loader = () => {
   const isLoading = useSelector(store => store.ui.isLoading);
 
-  return <>{isLoading && <div>LOADING!</div>}</>;
+  return <>{isLoading && <div>Loading...</div>}</>;
 };
 export default Loader;
-
-//lägg in styling för spinner

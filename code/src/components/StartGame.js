@@ -1,37 +1,58 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components/macro';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+//import styled from 'styled-components/macro';
 
 import { startGame } from '../reducers/thunk';
-import { game } from '../reducers/game';
+import UserInput from './UserInput';
 import Button from '../components/Button';
 
 const StartGame = () => {
-  const [username, setUsername] = useState('');
-  const [open, setOpen] = useState('');
+  //const [username, setUsername] = useState('');
+  //const [open, setOpen] = useState('');
 
   const dispatch = useDispatch();
-  //const currentUser = useSelector(store => store.game.username);
+  const username = useSelector(store => store.game.username);
 
-  const onAddUsername = event => {
-    event.preventDefault();
-    setOpen(open === '' ? 'open' : '');
-    dispatch(game.actions.setUsername({ username }));
-  };
+  // useEffect(() => {
+  //   console.log('username was updated');
+  //   onStartGame();
+  // }, [currentUser]);
 
-  const onHandleStartGame = () => {
-    dispatch(startGame(username));
-    console.log('start game, isGameStarted ');
-  };
+  // const onAddUsername = event => {
+  //   event.preventDefault();
+  //   setOpen(open === '' ? 'open' : '');
+  //   dispatch(game.actions.setUsername(username));
+  // };
 
-  const toggleDialog = () => {
-    setOpen(open === '' ? 'open' : '');
-    console.log('toggle');
-  };
+  // const onStartGame = () => {
+  //   dispatch(startGame(username));
+  //   console.log('start game, isGameStarted ');
+  // };
+
+  // const toggleDialog = () => {
+  //   setOpen(open === '' ? 'open' : '');
+  //   console.log('toggle');
+  // };
 
   return (
-    <Container>
-      <section className="nes-container is-rounded is-centered">
+    <>
+      <div className="nes-container with-title is-rounded is-centered">
+        <UserInput />
+        {/* {!username ? (
+          <UserInput />
+        ) : (
+          <>
+            <p>{`OK ${username}. Let's go!`}</p>
+            <Button
+              button="button"
+              //click={onStartGame}
+              text={'Start Game'}
+              className="nes-btn is-primary"
+            />
+          </>
+        )} */}
+      </div>
+      {/* <section className="nes-container is-rounded is-centered">
         <p>
           {!username ? 'Start by adding username' : `OK ${username}. Let's go!`}
         </p>
@@ -71,24 +92,21 @@ const StartGame = () => {
             />
           </Menu>
         </form>
-      </CustomDialog>
-    </Container>
+      </CustomDialog> */}
+    </>
   );
 };
 export default StartGame;
 
-const Container = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
+// const Container = styled.section`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+// `;
 
-const CustomDialog = styled.dialog`
-  margin: 10px;
-  //margin-bottom: 250px;
-`;
-const Menu = styled.menu`
-  display: flex;
-  margin-top: 20px;
-`;
+// const CustomDialog = styled.dialog`
+//   margin: 10px;
+//   //margin-bottom: 250px;
+// `;
+//

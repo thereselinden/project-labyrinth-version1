@@ -1,16 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Button = ({ button, click, disabled, text, className }) => {
   return (
-    <button
+    <CustomButton
       type={button}
       onClick={click}
       disabled={disabled}
       className={className}
     >
       {text}
-    </button>
+    </CustomButton>
   );
 };
 
 export default Button;
+
+const CustomButton = styled.button`
+  font-size: 14px;
+`;
