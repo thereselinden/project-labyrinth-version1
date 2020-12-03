@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 
 import StartGame from '../components/StartGame';
 import Game from '../components/Game';
+import GameMap from '../components/GameMap';
 
 const GamePage = () => {
-  //const isGameStarted = useSelector(store => store.game.isGameStarted);
   const currentGame = useSelector(store => store.game.game);
-  const username = useSelector(store => store.game.username);
-  console.log(currentGame.game);
-  //console.log(isGameStarted);
 
   return (
     <Main>
-      <Div>{!currentGame.description ? <StartGame /> : <Game />}</Div>
+      <Div>{!currentGame.description 
+          ? <StartGame /> 
+          : <>
+            <Game /> <GameMap/>
+          </>
+        }</Div>
     </Main>
   );
 };

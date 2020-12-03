@@ -17,5 +17,6 @@ const Button = ({ button, click, disabled, text, className }) => {
 export default Button;
 
 const CustomButton = styled.button`
-  font-size: 14px;
+  font-size: 13px;
+  padding: 6px;
 `;

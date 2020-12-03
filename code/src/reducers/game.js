@@ -1,19 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialGame = localStorage.getItem('game')
+  ? JSON.parse(localStorage.getItem('game'))
+  : {};
+
 export const game = createSlice({
   name: 'game',
   initialState: {
-    game: {},
+    game: initialGame,
     history: [],
     username: '',
-    previousStep: '',
+    previousStep: [],
+    coordinates: ["0,3", "1,3", "0,2", "1.2", "0,1", "1,1", "0,0", "1,0"],
   },
 
   reducers: {
-    // startGame: (state, action) => {
-    //   state.isGameStarted = action.payload;
-    // },
-
     setUsername: (state, action) => {
       state.username = action.payload;
       console.log(state.username);
@@ -26,14 +27,21 @@ export const game = createSlice({
     setDirection: (state, action) => {
       if (state.game.coordinates) {
         state.history = [...state.history, state.game];
+        state.previousStep = [...state.previousStep, state.game.coordinates];
       }
       state.game = action.payload;
     },
+
+    // setPreviousStep: (state, action) => {
+    //   state.previousStep = [...state.previousStep, state.game.coordinates];
+    //   console.log(state.previousStep)
+    // },
 
     historyGoBack: state => {
       if (state.history.length > 0) {
         state.game = state.history[state.history.length - 1];
         state.history = state.history.slice(0, state.history.length - 1);
+        state.previousStep = state.previousStep.slice(0, state.previousStep.length - 1);
       }
     },
 

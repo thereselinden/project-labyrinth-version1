@@ -6,11 +6,9 @@ import { game } from '../reducers/game';
 import { selectDirection } from '../reducers/thunk';
 import Button from './Button';
 import Loader from './Loader';
-//import ImgMediaCard from '../lib/Card';
 //import styled from 'styled-components';
 
 const GamePage = () => {
-  //const [isDirectionSelected, setIsDirectionSelected] = useState(false);
   const [directionIndex, setDirectionIndex] = useState('');
   const [open, setOpen] = useState('');
 
@@ -20,11 +18,8 @@ const GamePage = () => {
   const username = useSelector(store => store.game.username);
   const isLoading = useSelector(store => store.ui.isLoading);
 
-  console.log(gameData);
-
   const onSelectDirection = direction => {
     dispatch(selectDirection(direction, username));
-    console.log(username);
     setDirectionIndex('');
     setOpen('');
   };
@@ -40,7 +35,6 @@ const GamePage = () => {
   const toggleDialog = index => {
     setOpen(open === '' ? 'open' : '');
     setDirectionIndex(index);
-    console.log('toggle');
   };
 
   return (
@@ -54,50 +48,41 @@ const GamePage = () => {
               {gameData.coordinates === '0,0' ? (
                 <p className="title">{`Hello ${username}`}</p>
               ) : (
-                <Button
-                  button="button"
-                  className="nes-btn"
-                  click={onGoBack}
-                  text="Go Back"
-                />
+                <BackButton>
+                  <Button
+                    button="button"
+                    className="nes-btn"
+                    click={onGoBack}
+                    text="Go Back"
+                  />
+                </BackButton>
               )}
 
               <p className="nes-text">{gameData.description}</p>
               {gameData.actions.length > 0 ? (
                 <Menu className="dialog-menu">
-                  <section>
                     {gameData.actions.map((item, index) => (
-                      <>
+                      <div key={index}>
                         <Button
                           button="button"
-                          key={item.description}
+                          key={item.direction}
                           text={
                             `Look ${item.direction}`
-                            // directionIndex === ''
-                            //   ? `Look ${item.direction}`
-                            //   : `Continue ${item.direction}`
                           }
                           className="nes-btn is-primary"
-                          // click={
-                          //   directionIndex === ''
-                          //     ? () => setDirectionIndex(index)
-                          //     : () => onSelectDirection(item.direction)
-                          // }
                           click={() => toggleDialog(index)}
-                          //click={() => onSelectDirection(item.direction)}
                         />
                         {directionIndex === index && (
-                          <dialog
+                          <Dialog
                             open={open}
                             className="nes-dialog is-rounded"
                             id="dialog-rounded"
                           >
-                            {/* <form method="dialog"> */}
                             <p className="title">{`Looking ${gameData.actions[directionIndex].direction}:`}</p>
                             <p>
                               {gameData.actions[directionIndex].description}
                             </p>
-                            <menu className="dialog-menu">
+                            <Menu className="dialog-menu">
                               <Button
                                 click={toggleDialog}
                                 className="nes-btn"
@@ -108,20 +93,13 @@ const GamePage = () => {
                                 text={`Head ${gameData.actions[directionIndex].direction}`}
                                 click={() => onSelectDirection(item.direction)}
                               />
-                              {console.log(gameData.actions[directionIndex])}
-                              {console.log(directionIndex)}
-                            </menu>
-                            {/* </form> */}
-                          </dialog>
+                            </Menu>
+                          </Dialog>
                         )}
-                      </>
+                      </div>
                     ))}
-                  </section>
                 </Menu>
               ) : (
-                //  {directionIndex !== '' &&
-                //   <p>{gameData.actions[directionIndex].description}</p>
-                // }
                 <Button
                   button="button"
                   click={restartGame}
@@ -152,9 +130,8 @@ const Dialog = styled.dialog`
   max-width: 300px;
 `;
 
-// const Container = styled.article`
-//   display: flex;
-// `;
-
-//Grid med markör för att visa vart man är beroende på vilken väg man valt
-//allt en polyline baserat på coordinater.
+const BackButton = styled.div `
+  display: flex; 
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+`
