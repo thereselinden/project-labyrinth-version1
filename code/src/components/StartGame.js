@@ -50,7 +50,7 @@ const StartGame = () => {
           />
         </Menu>
       </form>
-    </div>
+    </div> 
   );
 };
 export default StartGame;

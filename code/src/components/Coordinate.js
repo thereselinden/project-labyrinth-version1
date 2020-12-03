@@ -3,12 +3,18 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const Coordinate = ({ coordinate }) => {
-  const currentCoordinate = useSelector(store => (store.game.game.coordinates));
-  console.log(currentCoordinate);
+  const currentCoordinates = useSelector(store => (store.game.game.coordinates));
+  const previousCoordinates = useSelector(store => (store.game.previousStep));
+  // console.log(previousCoordinates);
+  // console.log(currentCoordinates);
+  // console.log(coordinate)
+
+  const gameSteps = previousCoordinates.find((step => step === coordinate))
+  //console.log(gameSteps)
 
   return (
-    <MapCoordinate coordinate={coordinate} currentCoordinate={currentCoordinate}> 
-      {coordinate} {currentCoordinate}
+    <MapCoordinate coordinate={coordinate} currentCoordinates={currentCoordinates}> 
+      {coordinate} {currentCoordinates}
     </MapCoordinate>
   )
 }
@@ -16,7 +22,7 @@ export default Coordinate;
 
 const MapCoordinate = styled.div`
   border: 1px solid red;
-  background: ${props => props.coordinate === props.currentCoordinate ? "papayawhip" : "white"} 
+  background: ${props => props.coordinate === props.currentCoordinates || props.coordinate === props.gameSteps ? "papayawhip" : "white"} 
 `
 
 const Map = styled.section `

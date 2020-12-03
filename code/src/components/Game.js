@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { game } from '../reducers/game';
 import { selectDirection } from '../reducers/thunk';

@@ -1,14 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+import DialogMenu from '@material-ui/core/DialogMenu';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const ImgMediaCard = ({ coverImage, imageAlt, title, secondaryText, buttonText, onClick, maxWidth }) => {
+const ImgMediaCard = ({ key, coverImage, imageAlt, title, secondaryText, buttonText, onClick, maxWidth }) => {
 
   const useStyles = makeStyles({
     root: {
@@ -19,9 +19,13 @@ const ImgMediaCard = ({ coverImage, imageAlt, title, secondaryText, buttonText, 
 
   const classes = useStyles();
 
+  
+}
+export default ImgMediaCard;
+
   return (
       <Card className={classes.root}>
-        <CardActionArea>
+        <DialogMenu>
           {coverImage && 
             <CardMedia
               component="img"
@@ -42,7 +46,7 @@ const ImgMediaCard = ({ coverImage, imageAlt, title, secondaryText, buttonText, 
               </Typography>
             }
           </CardContent>
-        </CardActionArea>
+        </DialogMenu>
         {buttonText && 
           <CardActions>
             <Button size="small" color="primary" onClick={onClick}>
