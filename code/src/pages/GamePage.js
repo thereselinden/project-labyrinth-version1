@@ -8,51 +8,37 @@ import GameMap from '../components/GameMap';
 
 const GamePage = () => {
   const currentGame = useSelector(store => store.game.game);
-
   const description = currentGame.description;
-  console.log(description);
-
-  // {description ? (
-  //   if (description.includes("archway")) {
-  //     console.log("coordinate 0,0")
-  //   } else if (description.includes("mechanical"))
-  //     console.log("coordinate 0,1")
-  // ) : (
-
-  // )
-  // }
-
   let backgroundImage = '';
 
   if (description) {
     if (description.includes('archway')) {
-      backgroundImage = '../assets/cave.jpg';
+      backgroundImage = '../assets/vine_bricks.png';
     } else if (description.includes('mechanical')) {
       backgroundImage = '../assets/sand_brick.png';
     } else if (description.includes('melody')) {
-      console.log('0,2');
+      backgroundImage = '../assets/green_bricks.png';
     } else if (description.includes('bookshelves')) {
-      console.log('0,3');
+      backgroundImage = '../assets/castle_bricks.png';
     } else if (description.includes('ceiling')) {
-      backgroundImage = '../assets/ceiling.jpg';
+      backgroundImage = '../assets/dark_bricks.png';
     } else if (description.includes('brighter')) {
-      console.log('1,1');
+      backgroundImage = '../assets/long_bricks.png';
     } else if (description.includes('calm')) {
-      console.log('1,3');
-    } else console.log('end of story');
-  } else console.log('startPage');
+      backgroundImage = '../assets/bubbles.jpg' };
+  } else backgroundImage = "";
 
   return (
     <Main style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <Div>
-        {!currentGame.description ? (
+      {!currentGame.description ? (
+        <StartWrapper>
           <StartGame />
-        ) : (
-          <>
-            <Game /> <GameMap />
-          </>
-        )}
-      </Div>
+        </StartWrapper>
+      ) : (
+        <GameWrapper>
+          <Game /> <GameMap />
+        </GameWrapper>
+      )}
     </Main>
   );
 };
@@ -68,11 +54,15 @@ const Main = styled.main`
   background: #000;
 `;
 
-const Div = styled.div`
+const StartWrapper = styled.div`
   max-width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  min-height: 100vh;
+`;
+
+const GameWrapper = styled(StartWrapper) `
+  justify-content: space-around;
 `;

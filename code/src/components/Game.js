@@ -8,14 +8,10 @@ import Button from './Button';
 import Loader from './Loader';
 import { SubTitle, Text } from '../lib/Text';
 
-//import styled from 'styled-components';
-
 const GamePage = () => {
   const [directionIndex, setDirectionIndex] = useState('');
   const [open, setOpen] = useState('');
-
   const dispatch = useDispatch();
-
   const gameData = useSelector(store => store.game.game);
   const username = useSelector(store => store.game.username);
   const isLoading = useSelector(store => store.ui.isLoading);
@@ -59,7 +55,6 @@ const GamePage = () => {
                   />
                 </BackButton>
               )}
-
               <TextContainer>
                 <Text className="nes-text">{gameData.description}</Text>
               </TextContainer>
@@ -112,7 +107,6 @@ const GamePage = () => {
                     <i className="nes-icon is-medium star"></i>
                     <i className="nes-icon is-medium star"></i>
                   </IconSection>
-
                   <Button
                     button="button"
                     click={restartGame}

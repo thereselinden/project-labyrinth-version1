@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 
-import Coordinate from './Coordinate';
+import Coordinate from './MapCoordinates';
 
 const GameMap = () => {
   const coordinates = useSelector((store => store.game.coordinates));
-  //console.log(coordinates);
 
   return (
       <Map>
@@ -18,16 +17,9 @@ const GameMap = () => {
 };
 export default GameMap;
 
-const MapContainer = styled.div`
-  padding: 0 !important;
-`
-
 const Map = styled.section`
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   display: grid; 
   grid-template-columns: 1fr 1fr;
 `;
-
-
-
-

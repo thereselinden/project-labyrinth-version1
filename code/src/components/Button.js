@@ -13,7 +13,6 @@ const Button = ({ button, click, disabled, text, className }) => {
     </CustomButton>
   );
 };
-
 export default Button;
 
 const CustomButton = styled.button`

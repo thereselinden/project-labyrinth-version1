@@ -79,4 +79,3 @@ const Menu = styled.menu`
   justify-content: space-between;
   margin-top: 20px;
 `;
-
