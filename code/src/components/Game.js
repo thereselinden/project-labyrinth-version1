@@ -6,6 +6,8 @@ import { game } from '../reducers/game';
 import { selectDirection } from '../reducers/thunk';
 import Button from './Button';
 import Loader from './Loader';
+import { SubTitle, Text } from '../lib/Text';
+
 //import styled from 'styled-components';
 
 const GamePage = () => {
@@ -38,7 +40,8 @@ const GamePage = () => {
   };
 
   return (
-    <div className="nes-container with-title is-rounded is-centered">
+  
+    <TitleContainer>
       {isLoading ? (
         <Loader />
       ) : (
@@ -46,7 +49,7 @@ const GamePage = () => {
           {gameData.description && (
             <>
               {gameData.coordinates === '0,0' ? (
-                <p className="title">{`Hello ${username}`}</p>
+                <SubTitle className="nes-text is-primary">{`Hello ${username}`}</SubTitle>
               ) : (
                 <BackButton>
                   <Button
@@ -58,7 +61,7 @@ const GamePage = () => {
                 </BackButton>
               )}
 
-              <p className="nes-text">{gameData.description}</p>
+              <Text className="nes-text">{gameData.description}</Text>
               {gameData.actions.length > 0 ? (
                 <Menu className="dialog-menu">
                     {gameData.actions.map((item, index) => (
@@ -111,23 +114,25 @@ const GamePage = () => {
           )}
         </>
       )}
-    </div>
+    </TitleContainer>
   );
 };
 export default GamePage;
 
-const Container = styled.div`
-  height: 100%;
-`;
+const TitleContainer = styled.div`
+  text-align: center; 
+  margin-bottom: 20px;
+`
 
 const Menu = styled.menu`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 20px;
 `;
 
 const Dialog = styled.dialog`
-  max-width: 300px;
+  max-width: 600px;
+  left: 20%;
 `;
 
 const BackButton = styled.div `

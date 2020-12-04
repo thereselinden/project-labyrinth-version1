@@ -1,10 +1,14 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Text = () => {
- return (
-  <div class="nes-container with-title is-rounded">
-  </div>
- )
-}
-export default Text;
+export const Title = styled.h1`
+  color: #fff; 
+  font-size: 28px;
+`
+export const SubTitle = styled.h2`
+  font-size: 18px;
+  color: #fff;
+`
+export const Text = styled.p`
+  color: #fff;
+  
+`

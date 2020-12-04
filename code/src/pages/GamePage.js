@@ -61,12 +61,14 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  
-
-  //background-image: url('../assets/labyrinth.png');
   background-position: center;
+  background: #000;
 `;
 
 const Div = styled.div`
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
 `;
