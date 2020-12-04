@@ -17,7 +17,7 @@ const GameMap = () => {
       </Map>
     </MapContainer>  
   )
-}
+};
 export default GameMap;
 
 const MapContainer = styled.div`

@@ -16,7 +16,7 @@ const StartGame = () => {
     if (user) {
       dispatch(startGame());
     }
-  }, [user]);
+  }, [dispatch, user]);
 
   const onAddUserName = event => {
     event.preventDefault();

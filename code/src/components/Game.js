@@ -147,9 +147,14 @@ const Menu = styled.menu`
 `;
 
 const Dialog = styled.dialog`
+  margin-top: 20px;
   max-width: 600px;
   left: 11%;
   z-index: 1;
+
+  @media (min-width: 1024px) {
+    left: 24%;
+  }
 `;
 
 const BackButton = styled.div`

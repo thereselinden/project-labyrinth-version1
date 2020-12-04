@@ -7,7 +7,7 @@ const Coordinate = ({ coordinate }) => {
   const previousCoordinates = useSelector(store => store.game.previousStep);
   //console.log(previousCoordinates);
   //console.log(currentCoordinates);
-  console.log(typeof coordinate, previousCoordinates);
+  //console.log(typeof coordinate, previousCoordinates);
 
   const gameSteps = previousCoordinates.find(step => step === coordinate);
   //console.log(gameSteps)
