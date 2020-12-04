@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 
-import Coordinate from './MapCoordinates';
+import MapCoordinates from './MapCoordinates';
 
 const GameMap = () => {
   const coordinates = useSelector(store => store.game.coordinates);
 
   return (
     <Map>
-      {coordinates.map(coordinate => (
-        <Coordinate key={coordinate} coordinate={coordinate} />
+      {coordinates.map(mapCoordinates => (
+        <MapCoordinates key={mapCoordinates} mapCoordinates={mapCoordinates} />
       ))}
     </Map>
   );
