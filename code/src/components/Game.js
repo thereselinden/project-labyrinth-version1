@@ -40,7 +40,6 @@ const GamePage = () => {
   };
 
   return (
-  
     <TitleContainer>
       {isLoading ? (
         <Loader />
@@ -61,54 +60,66 @@ const GamePage = () => {
                 </BackButton>
               )}
 
-              <Text className="nes-text">{gameData.description}</Text>
+              <TextContainer>
+                <Text className="nes-text">{gameData.description}</Text>
+              </TextContainer>
               {gameData.actions.length > 0 ? (
                 <Menu className="dialog-menu">
-                    {gameData.actions.map((item, index) => (
-                      <div key={index}>
-                        <Button
-                          button="button"
-                          key={item.direction}
-                          text={
-                            `Look ${item.direction}`
-                          }
-                          className="nes-btn is-primary"
-                          click={() => toggleDialog(index)}
-                        />
-                        {directionIndex === index && (
-                          <Dialog
-                            open={open}
-                            className="nes-dialog is-rounded"
-                            id="dialog-rounded"
-                          >
-                            <p className="title">{`Looking ${gameData.actions[directionIndex].direction}:`}</p>
-                            <p>
-                              {gameData.actions[directionIndex].description}
-                            </p>
-                            <Menu className="dialog-menu">
-                              <Button
-                                click={toggleDialog}
-                                className="nes-btn"
-                                text="Cancel"
-                              />
-                              <Button
-                                className="nes-btn is-primary"
-                                text={`Head ${gameData.actions[directionIndex].direction}`}
-                                click={() => onSelectDirection(item.direction)}
-                              />
-                            </Menu>
-                          </Dialog>
-                        )}
-                      </div>
-                    ))}
+                  {gameData.actions.map((item, index) => (
+                    <div key={index}>
+                      <Button
+                        button="button"
+                        key={item.direction}
+                        text={`Look ${item.direction}`}
+                        className="nes-btn is-primary"
+                        click={() => toggleDialog(index)}
+                      />
+                      {directionIndex === index && (
+                        <Dialog
+                          open={open}
+                          className="nes-dialog is-rounded"
+                          id="dialog-rounded"
+                        >
+                          <p className="title">{`Looking ${gameData.actions[directionIndex].direction}:`}</p>
+                          <p>{gameData.actions[directionIndex].description}</p>
+                          <Menu className="dialog-menu">
+                            <Button
+                              click={toggleDialog}
+                              className="nes-btn"
+                              text="Cancel"
+                            />
+                            <Button
+                              className="nes-btn is-primary"
+                              text={`Head ${gameData.actions[directionIndex].direction}`}
+                              click={() => onSelectDirection(item.direction)}
+                            />
+                          </Menu>
+                        </Dialog>
+                      )}
+                    </div>
+                  ))}
                 </Menu>
               ) : (
-                <Button
-                  button="button"
-                  click={restartGame}
-                  text="Play again"
-                  className="nes-btn is-primary"
-                />
+                <>
+                  <IconSection className="icon-list">
+                    <i className="nes-icon is-medium star"></i>
+                    <i className="nes-icon is-medium star"></i>
+                    <i className="nes-icon is-medium star"></i>
+                  </IconSection>
+                  <SubTitle>GAME OVER</SubTitle>
+                  <IconSection className="icon-list">
+                    <i className="nes-icon is-medium star"></i>
+                    <i className="nes-icon is-medium star"></i>
+                    <i className="nes-icon is-medium star"></i>
+                  </IconSection>
+
+                  <Button
+                    button="button"
+                    click={restartGame}
+                    text="Play again"
+                    className="nes-btn is-primary"
+                  />
+                </>
               )}
             </>
           )}
@@ -120,9 +131,14 @@ const GamePage = () => {
 export default GamePage;
 
 const TitleContainer = styled.div`
-  text-align: center; 
+  text-align: center;
   margin-bottom: 20px;
-`
+`;
+
+const TextContainer = styled.div`
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px;
+`;
 
 const Menu = styled.menu`
   display: flex;
@@ -132,11 +148,16 @@ const Menu = styled.menu`
 
 const Dialog = styled.dialog`
   max-width: 600px;
-  left: 20%;
+  left: 11%;
+  z-index: 1;
 `;
 
-const BackButton = styled.div `
-  display: flex; 
+const BackButton = styled.div`
+  display: flex;
   justify-content: flex-start;
   margin-bottom: 1rem;
-`
+`;
+
+const IconSection = styled.section`
+  margin: 25px 0;
+`;
