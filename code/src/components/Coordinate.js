@@ -18,10 +18,15 @@ const Coordinate = ({ coordinate }) => {
       currentCoordinates={currentCoordinates}
       gameSteps={gameSteps}
     >
-      {coordinate === currentCoordinates && 
+      {coordinate === currentCoordinates && (
         <section className="icon-list">
-          <Icon className="nes-icon close is-medium"></Icon>
-        </section>}
+          {coordinate !== '1,3' ? (
+            <Icon className="nes-icon close is-medium"></Icon>
+          ) : (
+            <Icon className="nes-icon trophy is-medium"></Icon>
+          )}
+        </section>
+      )}
       {/* {coordinate} {currentCoordinates} */}
     </MapCoordinate>
   );
@@ -35,12 +40,12 @@ const MapCoordinate = styled.div`
   background: ${props =>
     props.coordinate === props.currentCoordinates ||
     props.coordinate === props.gameSteps
-      ? 'transparent'
+      ? 'rgba(255, 255, 255, 0.6)'
       : 'transparent'};
   border: ${props =>
     props.coordinate === props.currentCoordinates ||
     props.coordinate === props.gameSteps
-      ? '1px dotted #fff;'
+      ? '3px dotted #fff;'
       : 'transparent'};
 `;
 

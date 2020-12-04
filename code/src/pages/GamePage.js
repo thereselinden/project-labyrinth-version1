@@ -26,7 +26,7 @@ const GamePage = () => {
 
   if (description) {
     if (description.includes('archway')) {
-      backgroundImage = '../assets/cavern.jpg';
+      backgroundImage = '../assets/cave.jpg';
     } else if (description.includes('mechanical')) {
       backgroundImage = '../assets/sand_brick.png';
     } else if (description.includes('melody')) {
