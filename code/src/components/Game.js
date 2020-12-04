@@ -143,8 +143,12 @@ const Menu = styled.menu`
 const Dialog = styled.dialog`
   margin-top: 20px;
   max-width: 600px;
-  left: 11%;
+  left: 0;
   z-index: 1;
+
+  @media (min-width: 768px) {
+    left: 11%;
+  }
 
   @media (min-width: 1024px) {
     left: 24%;

@@ -25,7 +25,7 @@ const GamePage = () => {
     } else if (description.includes('brighter')) {
       backgroundImage = '../assets/long_bricks.png';
     } else if (description.includes('calm')) {
-      backgroundImage = '../assets/bubbles.jpg';
+      backgroundImage = '';
     }
   } else backgroundImage = '';
 

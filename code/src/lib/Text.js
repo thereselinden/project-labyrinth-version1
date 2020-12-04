@@ -8,6 +8,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.h2`
   font-size: 18px;
   color: #fff;
+  word-break: break-word;
 `;
 
 export const Text = styled.p`

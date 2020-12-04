@@ -19,6 +19,7 @@ export default GameMap;
 
 const Map = styled.section`
   max-width: 400px;
+  padding: 5px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
