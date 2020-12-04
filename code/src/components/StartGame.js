@@ -26,11 +26,11 @@ const StartGame = () => {
 
   return (
     <>
-      <TitleContainer> 
+      <TitleContainer>
         <Title>Welcome,</Title>
         <SubTitle>Let's get lost!</SubTitle>
       </TitleContainer>
-      <Container className="nes-container with-title is-rounded is-centered">  
+      <Container className="nes-container with-title is-rounded is-centered">
         <Text>Start by adding your username.</Text>
         <form onSubmit={onAddUserName}>
           <div className="nes-field">
@@ -51,18 +51,20 @@ const StartGame = () => {
               button="submit"
               text="Play game"
               disabled={!username}
-              className={username ? 'nes-btn is-primary' : 'nes-btn is-disabled'}
+              className={
+                username ? 'nes-btn is-primary' : 'nes-btn is-disabled'
+              }
             />
           </Menu>
         </form>
-      </Container> 
+      </Container>
     </>
   );
 };
 export default StartGame;
 
 const TitleContainer = styled.div`
-  text-align: center; 
+  text-align: center;
   margin-bottom: 20px;
 `;
 

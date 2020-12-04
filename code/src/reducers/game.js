@@ -11,7 +11,7 @@ export const game = createSlice({
     history: [],
     username: '',
     previousSteps: [],
-    coordinates: ["0,3", "1,3", "0,2", "1.2", "0,1", "1,1", "0,0", "1,0"],
+    coordinates: ['0,3', '1,3', '0,2', '1.2', '0,1', '1,1', '0,0', '1,0'],
   },
 
   reducers: {
@@ -35,7 +35,10 @@ export const game = createSlice({
       if (state.history.length > 0) {
         state.game = state.history[state.history.length - 1];
         state.history = state.history.slice(0, state.history.length - 1);
-        state.previousSteps = state.previousSteps.slice(0, state.previousSteps.length - 1);
+        state.previousSteps = state.previousSteps.slice(
+          0,
+          state.previousSteps.length - 1
+        );
       }
     },
 

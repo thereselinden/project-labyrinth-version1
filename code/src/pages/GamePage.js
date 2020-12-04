@@ -25,8 +25,9 @@ const GamePage = () => {
     } else if (description.includes('brighter')) {
       backgroundImage = '../assets/long_bricks.png';
     } else if (description.includes('calm')) {
-      backgroundImage = '../assets/bubbles.jpg' };
-  } else backgroundImage = "";
+      backgroundImage = '../assets/bubbles.jpg';
+    }
+  } else backgroundImage = '';
 
   return (
     <Main style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -63,6 +64,6 @@ const StartWrapper = styled.div`
   align-items: center;
 `;
 
-const GameWrapper = styled(StartWrapper) `
+const GameWrapper = styled(StartWrapper)`
   justify-content: space-around;
 `;

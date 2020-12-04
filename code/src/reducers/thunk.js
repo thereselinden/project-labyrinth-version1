@@ -11,11 +11,14 @@ export const startGame = () => {
     })
       .then(data => data.json())
       .then(json => {
-        localStorage.setItem("game", JSON.stringify(json));
-        localStorage.setItem("username", JSON.stringify(getStore().game.username));
+        localStorage.setItem('game', JSON.stringify(json));
+        localStorage.setItem(
+          'username',
+          JSON.stringify(getStore().game.username)
+        );
         dispatch(game.actions.setGame(json));
         dispatch(ui.actions.setLoading(false));
-      }); 
+      });
   };
 };
 
@@ -33,7 +36,7 @@ export const selectDirection = (direction, username) => {
     })
       .then(data => data.json())
       .then(json => {
-        localStorage.setItem("game", JSON.stringify(json));
+        localStorage.setItem('game', JSON.stringify(json));
         dispatch(game.actions.setDirection(json));
         dispatch(ui.actions.setLoading(false));
       });
