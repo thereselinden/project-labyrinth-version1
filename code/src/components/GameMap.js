@@ -9,13 +9,11 @@ const GameMap = () => {
   //console.log(coordinates);
 
   return (
-    <MapContainer className="nes-container with-title is-rounded">
       <Map>
         {coordinates.map(coordinate => (
           <Coordinate key={coordinate} coordinate={coordinate}/>
         ))}
       </Map>
-    </MapContainer>  
   )
 };
 export default GameMap;
@@ -25,9 +23,9 @@ const MapContainer = styled.div`
 `
 
 const Map = styled.section`
+  width: 400px;
   display: grid; 
   grid-template-columns: 1fr 1fr;
-  border: 1px solid #000;
 `;
 
 

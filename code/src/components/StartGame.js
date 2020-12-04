@@ -64,14 +64,15 @@ export default StartGame;
 const TitleContainer = styled.div`
   text-align: center; 
   margin-bottom: 20px;
-`
+`;
 
 const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.6);
-`
+`;
+
 const Input = styled.input`
   background-color: rgba(255, 255, 255, 0.6);
-`
+`;
 
 const Menu = styled.menu`
   display: flex;

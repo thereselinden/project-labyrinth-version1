@@ -18,23 +18,33 @@ const Coordinate = ({ coordinate }) => {
       currentCoordinates={currentCoordinates}
       gameSteps={gameSteps}
     >
-      {coordinate} {currentCoordinates}
+      {coordinate === currentCoordinates && 
+        <section className="icon-list">
+          <Icon className="nes-icon close is-medium"></Icon>
+        </section>}
+      {/* {coordinate} {currentCoordinates} */}
     </MapCoordinate>
   );
 };
 export default Coordinate;
 
 const MapCoordinate = styled.div`
-  border: 1px solid red;
+  height: 50px;
+  padding: 5px 0;
+  text-align: center;
   background: ${props =>
     props.coordinate === props.currentCoordinates ||
     props.coordinate === props.gameSteps
-      ? 'papayawhip'
-      : 'white'};
+      ? 'transparent'
+      : 'transparent'};
+  border: ${props =>
+    props.coordinate === props.currentCoordinates ||
+    props.coordinate === props.gameSteps
+      ? '1px dotted #fff;'
+      : 'transparent'};
 `;
 
-const Map = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid #000;
+const Icon = styled.i`
+  margin: 0 !important;
+  transform: scale(1.5) !important;
 `;

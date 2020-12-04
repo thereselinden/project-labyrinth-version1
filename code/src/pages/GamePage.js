@@ -26,8 +26,7 @@ const GamePage = () => {
 
   if (description) {
     if (description.includes('archway')) {
-      backgroundImage =
-        'https://images.unsplash.com/photo-1448375240586-882707db888b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
+      backgroundImage = '../assets/cavern.jpg';
     } else if (description.includes('mechanical')) {
       backgroundImage = '../assets/sand_brick.png';
     } else if (description.includes('melody')) {
@@ -35,7 +34,7 @@ const GamePage = () => {
     } else if (description.includes('bookshelves')) {
       console.log('0,3');
     } else if (description.includes('ceiling')) {
-      console.log('1,0');
+      backgroundImage = '../assets/ceiling.jpg';
     } else if (description.includes('brighter')) {
       console.log('1,1');
     } else if (description.includes('calm')) {
@@ -65,6 +64,7 @@ const Main = styled.main`
   justify-content: center;
   min-height: 100vh;
   background-position: center;
+  background-repeat: no-repeat;
   background: #000;
 `;
 
@@ -73,5 +73,6 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   min-height: 100vh;
 `;
